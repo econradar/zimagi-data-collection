@@ -1,0 +1,45 @@
+_base_model: &base_model
+    admin_roles: [ data-admin ]
+    view_roles: [ data-auditor ]
+
+
+models:
+    source:
+        <<: *base_model
+        base: name_resource
+        command_base: source
+        display: "<name>"
+        priority: 50
+
+    series_index:
+        <<: *base_model
+        base: source
+        plural_suffix: es
+        id_fields: [ source_id, external_id ]
+        key: external_id
+        command_base: series
+        display: "<source_id>-<external_id>"
+        priority: 55
+        fields:
+            external_id:
+                type: string
+            description:
+                type: text
+            frequency:
+                type: string
+            frequency_short:
+                type: string
+            units:
+                type: string
+            units_short:
+                type: string
+            seasonal_adjustment:
+                type: string
+            seasonal_adjustment_short:
+                type: string
+            popularity:
+                type: integer
+            start:
+                type: date
+            end:
+                type: date

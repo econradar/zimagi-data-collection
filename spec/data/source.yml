@@ -1,0 +1,61 @@
+
+
+#
+# Define collections of fields for data models
+#
+data_mixins:
+    source:
+        class: SourceMixin
+        fields:
+            source:
+                type: "@django.ForeignKey"
+                relation: source
+                options:
+                    on_delete: "@django.PROTECT"
+
+    source_optional:
+        class: SourceOptionalMixin
+        fields:
+            source:
+                type: "@django.ForeignKey"
+                relation: source
+                options:
+                    on_delete: "@django.SET_NULL"
+                    "null": true
+
+    sources:
+        class: SourceMultipleMixin
+        fields:
+            sources:
+                type: "@django.ManyToManyField"
+                relation: source
+                options:
+                    blank: true
+#
+# Define abstract base data model (for parent relationships)
+#
+data_base:
+    source:
+        class: SourceBase
+        base: id_resource
+        mixins: ["source"]
+        id_fields: ["source_id", name]
+        meta:
+            unique_together: ["source", name]
+            scope: source
+
+#
+# Define actual data model
+#
+data:
+    source:
+        class: Source
+        base: name_resource
+        api: True
+        display: <name>
+        roles:
+            edit: ['data-admin']
+            view: ['data-auditor']
+        fields:
+        meta:
+            command_base: source

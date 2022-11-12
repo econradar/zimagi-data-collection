@@ -1,0 +1,147 @@
+data_mixins:
+  series_index:
+    class: SeriesIndexMixin
+    fields:
+      series_index:
+        type: '@django.ForeignKey'
+        relation: series_index
+        options:
+          on_delete: '@django.PROTECT'
+  series_index_optional:
+    class: SeriesIndexOptionalMixin
+    fields:
+      series_index:
+        type: '@django.ForeignKey'
+        relation: series_index
+        options:
+          on_delete: '@django.SET_NULL'
+          'null': true
+  series_indexes:
+    class: SeriesIndexMultipleMixin
+    fields:
+      series_indexes:
+        type: '@django.ManyToManyField'
+        relation: series_index
+        options:
+          blank: true
+data_base:
+  series_index:
+    class: SeriesIndexBase
+    base: id_resource
+    mixins:
+    - series_index
+    id_fields:
+    - series_index_id
+    - name
+    meta:
+      unique_together:
+      - series_index
+      - name
+      scope: series_index
+data:
+  series_index:
+    class: SeriesIndex
+    base: source
+    id_fields:
+    - source_id
+    - external_id
+    key: external_id
+    api: true
+    display: <source_id>-<external_id>
+    roles:
+      edit:
+      - data-admin
+      view:
+      - data-auditor
+    fields:
+      popularity:
+        type: '@django.IntegerField'
+        options:
+          'null': true
+          default: null
+          editable: true
+          system: false
+      units_short:
+        type: '@django.CharField'
+        options:
+          'null': true
+          default: null
+          max_length: 256
+          editable: true
+          system: false
+      external_id:
+        type: '@django.CharField'
+        options:
+          'null': true
+          default: null
+          max_length: 256
+          editable: true
+          system: false
+      description:
+        type: '@django.TextField'
+        options:
+          'null': true
+          default: null
+          editable: true
+          system: false
+      start:
+        type: '@django.DateField'
+        options:
+          'null': true
+          default: null
+          editable: true
+          system: false
+      seasonal_adjustment_short:
+        type: '@django.CharField'
+        options:
+          'null': true
+          default: null
+          max_length: 256
+          editable: true
+          system: false
+      seasonal_adjustment:
+        type: '@django.CharField'
+        options:
+          'null': true
+          default: null
+          max_length: 256
+          editable: true
+          system: false
+      frequency:
+        type: '@django.CharField'
+        options:
+          'null': true
+          default: null
+          max_length: 256
+          editable: true
+          system: false
+      frequency_short:
+        type: '@django.CharField'
+        options:
+          'null': true
+          default: null
+          max_length: 256
+          editable: true
+          system: false
+      units:
+        type: '@django.CharField'
+        options:
+          'null': true
+          default: null
+          max_length: 256
+          editable: true
+          system: false
+      end:
+        type: '@django.DateField'
+        options:
+          'null': true
+          default: null
+          editable: true
+          system: false
+    meta:
+      unique_together:
+      - source_id
+      - external_id
+      ordering:
+      - external_id
+      command_base: series
