@@ -54,52 +54,7 @@ data:
       view:
       - data-auditor
     fields:
-      popularity:
-        type: '@django.IntegerField'
-        options:
-          'null': true
-          default: null
-          editable: true
-          system: false
-      units_short:
-        type: '@django.CharField'
-        options:
-          'null': true
-          default: null
-          max_length: 256
-          editable: true
-          system: false
-      external_id:
-        type: '@django.CharField'
-        options:
-          'null': true
-          default: null
-          max_length: 256
-          editable: true
-          system: false
-      description:
-        type: '@django.TextField'
-        options:
-          'null': true
-          default: null
-          editable: true
-          system: false
-      start:
-        type: '@django.DateField'
-        options:
-          'null': true
-          default: null
-          editable: true
-          system: false
-      seasonal_adjustment_short:
-        type: '@django.CharField'
-        options:
-          'null': true
-          default: null
-          max_length: 256
-          editable: true
-          system: false
-      seasonal_adjustment:
+      units:
         type: '@django.CharField'
         options:
           'null': true
@@ -115,6 +70,44 @@ data:
           max_length: 256
           editable: true
           system: false
+      external_id:
+        type: '@django.CharField'
+        options:
+          'null': true
+          default: null
+          max_length: 256
+          editable: true
+          system: false
+      start:
+        type: '@django.DateField'
+        options:
+          'null': true
+          default: null
+          editable: true
+          system: false
+      seasonal_adjustment:
+        type: '@django.CharField'
+        options:
+          'null': true
+          default: null
+          max_length: 256
+          editable: true
+          system: false
+      popularity:
+        type: '@django.IntegerField'
+        options:
+          'null': true
+          default: null
+          editable: true
+          system: false
+      seasonal_adjustment_short:
+        type: '@django.CharField'
+        options:
+          'null': true
+          default: null
+          max_length: 256
+          editable: true
+          system: false
       frequency_short:
         type: '@django.CharField'
         options:
@@ -123,12 +116,19 @@ data:
           max_length: 256
           editable: true
           system: false
-      units:
+      units_short:
         type: '@django.CharField'
         options:
           'null': true
           default: null
           max_length: 256
+          editable: true
+          system: false
+      description:
+        type: '@django.TextField'
+        options:
+          'null': true
+          default: null
           editable: true
           system: false
       end:
