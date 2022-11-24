@@ -42,6 +42,8 @@ data:
   series_index:
     class: SeriesIndex
     base: source
+    mixins:
+    - series_categories
     id_fields:
     - source_id
     - external_id
@@ -54,6 +56,13 @@ data:
       view:
       - data-auditor
     fields:
+      description:
+        type: '@django.TextField'
+        options:
+          'null': true
+          default: null
+          editable: true
+          system: false
       units:
         type: '@django.CharField'
         options:
@@ -62,20 +71,11 @@ data:
           max_length: 256
           editable: true
           system: false
-      frequency:
-        type: '@django.CharField'
+      end:
+        type: '@django.DateField'
         options:
           'null': true
           default: null
-          max_length: 256
-          editable: true
-          system: false
-      external_id:
-        type: '@django.CharField'
-        options:
-          'null': true
-          default: null
-          max_length: 256
           editable: true
           system: false
       start:
@@ -83,6 +83,14 @@ data:
         options:
           'null': true
           default: null
+          editable: true
+          system: false
+      frequency:
+        type: '@django.CharField'
+        options:
+          'null': true
+          default: null
+          max_length: 256
           editable: true
           system: false
       seasonal_adjustment:
@@ -100,42 +108,12 @@ data:
           default: null
           editable: true
           system: false
-      seasonal_adjustment_short:
+      external_id:
         type: '@django.CharField'
         options:
           'null': true
           default: null
           max_length: 256
-          editable: true
-          system: false
-      frequency_short:
-        type: '@django.CharField'
-        options:
-          'null': true
-          default: null
-          max_length: 256
-          editable: true
-          system: false
-      units_short:
-        type: '@django.CharField'
-        options:
-          'null': true
-          default: null
-          max_length: 256
-          editable: true
-          system: false
-      description:
-        type: '@django.TextField'
-        options:
-          'null': true
-          default: null
-          editable: true
-          system: false
-      end:
-        type: '@django.DateField'
-        options:
-          'null': true
-          default: null
           editable: true
           system: false
     meta:

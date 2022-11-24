@@ -11,9 +11,27 @@ models:
         display: "<name>"
         priority: 50
 
+    series_category:
+        <<: *base_model
+        base: source
+        plural: series_categories
+        id_fields: [ source_id, external_id ]
+        key: external_id
+        command_base: category
+        display: "<source_id>-<external_id>"
+        priority: 55
+        fields:
+            external_id:
+                type: string
+            parent:
+                type: foreign_key
+                options:
+                    related_data_name: series_category
+
     series_index:
         <<: *base_model
         base: source
+        mixins: [ series_categories ]
         plural_suffix: es
         id_fields: [ source_id, external_id ]
         key: external_id
@@ -27,15 +45,9 @@ models:
                 type: text
             frequency:
                 type: string
-            frequency_short:
-                type: string
             units:
                 type: string
-            units_short:
-                type: string
             seasonal_adjustment:
-                type: string
-            seasonal_adjustment_short:
                 type: string
             popularity:
                 type: integer

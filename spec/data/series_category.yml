@@ -1,0 +1,80 @@
+data_mixins:
+  series_category:
+    class: SeriesCategoryMixin
+    fields:
+      series_category:
+        type: '@django.ForeignKey'
+        relation: series_category
+        options:
+          on_delete: '@django.PROTECT'
+  series_category_optional:
+    class: SeriesCategoryOptionalMixin
+    fields:
+      series_category:
+        type: '@django.ForeignKey'
+        relation: series_category
+        options:
+          on_delete: '@django.SET_NULL'
+          'null': true
+  series_categories:
+    class: SeriesCategoryMultipleMixin
+    fields:
+      series_categories:
+        type: '@django.ManyToManyField'
+        relation: series_category
+        options:
+          blank: true
+data_base:
+  series_category:
+    class: SeriesCategoryBase
+    base: id_resource
+    mixins:
+    - series_category
+    id_fields:
+    - series_category_id
+    - name
+    meta:
+      unique_together:
+      - series_category
+      - name
+      scope: series_category
+data:
+  series_category:
+    class: SeriesCategory
+    base: source
+    id_fields:
+    - source_id
+    - external_id
+    key: external_id
+    api: true
+    display: <source_id>-<external_id>
+    roles:
+      edit:
+      - data-admin
+      view:
+      - data-auditor
+    fields:
+      parent:
+        type: '@django.ForeignKey'
+        relation: series_category
+        color: relation
+        options:
+          'null': true
+          on_delete: '@django.SET_NULL'
+          editable: true
+          system: false
+      external_id:
+        type: '@django.CharField'
+        options:
+          'null': true
+          default: null
+          max_length: 256
+          editable: true
+          system: false
+    meta:
+      unique_together:
+      - source_id
+      - external_id
+      ordering:
+      - external_id
+      command_base: category

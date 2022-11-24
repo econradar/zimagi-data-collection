@@ -7,7 +7,7 @@ command_mixins:
     series_index:
         aliases: ["series_index_optional"]
         class: SeriesIndexMixin
-        mixins: ['source']
+        mixins: ['source', 'series_categories']
         meta:
             series_index:
                 data: series_index
@@ -15,7 +15,7 @@ command_mixins:
 
     series_indexes:
         class: SeriesIndexMultipleMixin
-        mixins: ['source']
+        mixins: ['source', 'series_categories']
         meta:
             series_indexes:
                 data: series_index
