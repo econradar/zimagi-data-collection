@@ -54,11 +54,12 @@ data:
       view:
       - data-auditor
     fields:
-      description:
-        type: '@django.TextField'
+      external_id:
+        type: '@django.CharField'
         options:
           'null': true
           default: null
+          max_length: 256
           editable: true
           system: false
       parent:
@@ -70,12 +71,11 @@ data:
           on_delete: '@django.SET_NULL'
           editable: true
           system: false
-      external_id:
-        type: '@django.CharField'
+      description:
+        type: '@django.TextField'
         options:
           'null': true
           default: null
-          max_length: 256
           editable: true
           system: false
     meta:

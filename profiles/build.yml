@@ -43,13 +43,14 @@ models:
         display: "<source_id>-<external_id>"
         priority: 55
         fields:
+            external_id:
+                type: string
+                options:
+                    nullable: false
             name:
                 type: string
                 options:
                     max_length: 500
-                    nullable: false
-            external_id:
-                type: string
             description:
                 type: text
             frequency:

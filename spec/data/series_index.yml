@@ -60,31 +60,9 @@ data:
       name:
         type: '@django.CharField'
         options:
-          'null': false
+          'null': true
           default: null
           max_length: 500
-          editable: true
-          system: false
-      description:
-        type: '@django.TextField'
-        options:
-          'null': true
-          default: null
-          editable: true
-          system: false
-      units:
-        type: '@django.CharField'
-        options:
-          'null': true
-          default: null
-          max_length: 256
-          editable: true
-          system: false
-      popularity:
-        type: '@django.IntegerField'
-        options:
-          'null': true
-          default: null
           editable: true
           system: false
       end:
@@ -102,6 +80,13 @@ data:
           max_length: 256
           editable: true
           system: false
+      popularity:
+        type: '@django.IntegerField'
+        options:
+          'null': true
+          default: null
+          editable: true
+          system: false
       frequency:
         type: '@django.CharField'
         options:
@@ -110,7 +95,14 @@ data:
           max_length: 256
           editable: true
           system: false
-      external_id:
+      description:
+        type: '@django.TextField'
+        options:
+          'null': true
+          default: null
+          editable: true
+          system: false
+      units:
         type: '@django.CharField'
         options:
           'null': true
@@ -123,6 +115,14 @@ data:
         options:
           'null': true
           default: null
+          editable: true
+          system: false
+      external_id:
+        type: '@django.CharField'
+        options:
+          'null': false
+          default: null
+          max_length: 256
           editable: true
           system: false
     meta:
