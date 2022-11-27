@@ -43,6 +43,7 @@ data:
     class: SeriesIndex
     base: source
     mixins:
+    - provider
     - series_categories
     id_fields:
     - source_id
@@ -64,8 +65,8 @@ data:
           max_length: 500
           editable: true
           system: false
-      end:
-        type: '@django.DateField'
+      description:
+        type: '@django.TextField'
         options:
           'null': true
           default: null
@@ -79,7 +80,21 @@ data:
           max_length: 256
           editable: true
           system: false
-      frequency:
+      popularity:
+        type: '@django.IntegerField'
+        options:
+          'null': true
+          default: null
+          editable: true
+          system: false
+      end:
+        type: '@django.DateField'
+        options:
+          'null': true
+          default: null
+          editable: true
+          system: false
+      seasonal_adjustment:
         type: '@django.CharField'
         options:
           'null': true
@@ -87,14 +102,7 @@ data:
           max_length: 256
           editable: true
           system: false
-      description:
-        type: '@django.TextField'
-        options:
-          'null': true
-          default: null
-          editable: true
-          system: false
-      seasonal_adjustment:
+      frequency:
         type: '@django.CharField'
         options:
           'null': true
@@ -117,14 +125,8 @@ data:
           default: null
           editable: true
           system: false
-      popularity:
-        type: '@django.IntegerField'
-        options:
-          'null': true
-          default: null
-          editable: true
-          system: false
     meta:
+      provider_name: series_index
       unique_together:
       - source_id
       - external_id

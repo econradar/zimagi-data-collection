@@ -12,6 +12,8 @@ command_mixins:
             series_index:
                 data: series_index
                 relations: true
+                provider: true
+                default: base
 
     series_indexes:
         class: SeriesIndexMultipleMixin
@@ -20,6 +22,8 @@ command_mixins:
             series_indexes:
                 data: series_index
                 relations: true
+                provider: true
+                default: base
 
 #
 # Define data related base command

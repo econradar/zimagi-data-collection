@@ -1,0 +1,4 @@
+plugin:
+    series_index:
+        base: data
+        data: series_index

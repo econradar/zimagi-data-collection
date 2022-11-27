@@ -51,6 +51,7 @@ data:
     source:
         class: Source
         base: name_resource
+        mixins: ['group']
         api: True
         display: <name>
         roles:
