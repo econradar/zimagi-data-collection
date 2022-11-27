@@ -2,7 +2,6 @@ _base_model: &base_model
     admin_roles: [ data-admin ]
     view_roles: [ data-auditor ]
 
-
 models:
     source:
         <<: *base_model
