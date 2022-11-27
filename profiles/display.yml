@@ -1,0 +1,48 @@
+config_store:
+    source_list_fields:
+        - groups
+    source_display_fields:
+        - created
+        - updated
+        - groups
+
+    series_category_list_fields:
+        - name
+        - external_id
+        - source
+        - parent
+    series_category_display_fields:
+        - name
+        - external_id
+        - description
+        - created
+        - updated
+        - source
+        - parent
+
+    series_index_list_fields:
+        - name
+        - external_id
+        - provider_type
+        - start
+        - end
+        - source
+        - series_categories
+    series_index_display_fields:
+        - name
+        - external_id
+        - provider_type
+        - description
+        - frequency
+        - units
+        - seasonal_adjustment
+        - popularity
+        - start
+        - end
+        - created
+        - updated
+        - config
+        - secrets
+        - variables
+        - source
+        - series_categories
