@@ -54,6 +54,13 @@ data:
       view:
       - data-auditor
     fields:
+      description:
+        type: '@django.TextField'
+        options:
+          'null': true
+          default: null
+          editable: true
+          system: false
       parent:
         type: '@django.ForeignKey'
         relation: series_category

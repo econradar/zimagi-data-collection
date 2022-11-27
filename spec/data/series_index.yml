@@ -56,8 +56,16 @@ data:
       view:
       - data-auditor
     fields:
-      description:
-        type: '@django.TextField'
+      name:
+        type: '@django.CharField'
+        options:
+          'null': false
+          default: null
+          max_length: 500
+          editable: true
+          system: false
+      end:
+        type: '@django.DateField'
         options:
           'null': true
           default: null
@@ -71,26 +79,19 @@ data:
           max_length: 256
           editable: true
           system: false
-      end:
-        type: '@django.DateField'
-        options:
-          'null': true
-          default: null
-          editable: true
-          system: false
-      start:
-        type: '@django.DateField'
-        options:
-          'null': true
-          default: null
-          editable: true
-          system: false
       frequency:
         type: '@django.CharField'
         options:
           'null': true
           default: null
           max_length: 256
+          editable: true
+          system: false
+      description:
+        type: '@django.TextField'
+        options:
+          'null': true
+          default: null
           editable: true
           system: false
       seasonal_adjustment:
@@ -101,19 +102,26 @@ data:
           max_length: 256
           editable: true
           system: false
-      popularity:
-        type: '@django.IntegerField'
-        options:
-          'null': true
-          default: null
-          editable: true
-          system: false
       external_id:
         type: '@django.CharField'
         options:
           'null': true
           default: null
           max_length: 256
+          editable: true
+          system: false
+      start:
+        type: '@django.DateField'
+        options:
+          'null': true
+          default: null
+          editable: true
+          system: false
+      popularity:
+        type: '@django.IntegerField'
+        options:
+          'null': true
+          default: null
           editable: true
           system: false
     meta:

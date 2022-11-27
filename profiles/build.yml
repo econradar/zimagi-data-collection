@@ -27,6 +27,8 @@ models:
                 type: foreign_key
                 options:
                     related_data_name: series_category
+            description:
+                type: text
 
     series_index:
         <<: *base_model
@@ -35,10 +37,16 @@ models:
         plural_suffix: es
         id_fields: [ source_id, external_id ]
         key: external_id
+        name_field: false
         command_base: series
         display: "<source_id>-<external_id>"
         priority: 55
         fields:
+            name:
+                type: string
+                options:
+                    max_length: 500
+                    nullable: false
             external_id:
                 type: string
             description:
