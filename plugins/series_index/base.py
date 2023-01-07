@@ -1,5 +1,8 @@
 from systems.plugins.index import BasePlugin
 
+import os
+import pathlib
+
 
 class BaseProvider(BasePlugin('series_index')):
 
@@ -20,6 +23,25 @@ class BaseProvider(BasePlugin('series_index')):
                 'series_index_id': self.instance.get_id()
             })
         return self._data_facade
+
+
+    def get_image_path(self, *path):
+        directory = os.path.dirname(os.path.join(*path))
+        pathlib.Path(os.path.join(self.manager.image_path, directory)).mkdir(parents = True, exist_ok = True)
+
+        return os.path.join(
+            self.manager.image_path,
+            *path
+        )
+
+    def get_data_path(self, *path):
+        directory = os.path.dirname(os.path.join(*path))
+        pathlib.Path(os.path.join(self.manager.data_path, directory)).mkdir(parents = True, exist_ok = True)
+
+        return os.path.join(
+            self.manager.data_path,
+            *path
+        )
 
 
     def get_system_fields(self):
