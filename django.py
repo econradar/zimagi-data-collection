@@ -8,6 +8,11 @@ from settings.config import Config
 settings.PROJECT_PATH_MAP['image_path'] = 'images'
 
 #
+# Data configuration
+#
+settings.PROJECT_PATH_MAP['data_path'] = 'data'
+
+#
 # Color configurations
 #
 PYPLOT_FILL_OPACITY = Config.decimal('ZIMAGI_PYPLOT_FILL_OPACITY', 0.5)
