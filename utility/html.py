@@ -118,14 +118,12 @@ class HTML(object):
         )
 
 
-    def iframe(self, url, width = '100%', height = '100%', **attributes):
+    def iframe(self, url, width = '100%', **attributes):
         return self.tag('iframe',
             src = url,
             width = width,
-            height = height,
             frameborder = "0",
             scrolling = "no",
-            onload = "resizeIframe(this)",
             **attributes
         )
 
